@@ -1116,7 +1116,8 @@ footer { background: var(--dark); color: rgba(255,255,255,0.8); padding: 50px 0 
   #chatFab { bottom: 16px; right: 16px; }
   #productsGrid { grid-template-columns: repeat(2,1fr) !important; gap: 10px !important; padding: 0 8px !important; }
   .nav-logo span { font-size: 15px; }
-  .btn-order { padding: 8px 12px; font-size: 12px; }
+  .btn-order { padding: 8px 10px; font-size: 12px; min-width: 44px; }
+  .cart-badge { display: inline-flex !important; background: var(--gold); }
 }
 
 /* ═══════════════════════════════════════════
@@ -1213,6 +1214,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.8); padding: 50px 0 
   /* Nav */
   .nav-link { display: none; }
   .btn-order span:first-of-type { display: none; }
+  .cart-badge { display: inline-flex !important; }
 
   /* Hero */
   .hero-inner { flex-direction: column; padding: 40px 16px; gap: 24px; }
