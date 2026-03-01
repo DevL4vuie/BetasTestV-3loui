@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gene's Lechon – Walang Kapantay!</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  
+</head>
+<body>
+
+<header>
+  <nav class="nav-main">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">🐷</div>
+      <div class="logo-text">
+        <strong>Gene's Lechon</strong>
+        <span>Est. 2010 • CDO</span>
+      </div>
+    </a>
+
+    <div class="nav-right">
+      <a href="#menu" class="nav-link">Menu</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#" class="nav-link" onclick="openTracker(); return false;">
+        <i class="fas fa-search" style="font-size:11px;margin-right:4px;"></i>Track Order
+      </a>
+
+      <button class="btn-order" onclick="toggleCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <span>My Order</span>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+
+      <button class="hamburger" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ENHANCED HERO with Real App Screenshot -->
+<section class="hero-enhanced">
+  <div class="hero-container">
+    
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span>🏆</span> CAGAYAN DE ORO'S FAVORITE
+      </div>
+
+      <h1>
+        Order Lechon
+        <span>Made Simple.</span>
+      </h1>
+
+      <p class="hero-subtitle">Walang Kapantay ang Sarap!</p>
+      <p class="hero-caption">
+        Skip the long lines. Browse our menu, order your favorite lechon, and track your inquiry—all from your phone.
+        <strong>Fast, secure, and officially from Gene's Lechon.</strong>
+      </p>
+
+      <div class="hero-buttons">
+        <button class="btn-hero btn-hero-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
+          <i class="fas fa-utensils"></i> Browse Menu
+        </button>
+        <button class="btn-hero btn-hero-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          <i class="fas fa-phone"></i> Contact Us
+        </button>
+        <button class="btn-hero btn-hero-track" onclick="openTracker()">
+          <i class="fas fa-search"></i> Track Order
+        </button>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Real-time Tracking</div>
+          <div class="feature-desc">Monitor your order instantly</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-title">Secure Process</div>
+          <div class="feature-desc">Official verified system</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <div class="feature-title">Fast & Efficient</div>
+          <div class="feature-desc">Save time, skip the lines</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <div class="feature-title">100% Digital</div>
+          <div class="feature-desc">Order from anywhere</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone Mockup with REAL App Screenshot -->
+    <div class="hero-right">
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <!-- 
+            IMPORTANT: Replace this src with your actual app screenshot path
+            Example: <img src="images/app-screenshot.png" class="app-screenshot" alt="Gene's Lechon App"/>
+            
+            For now, using a base64 placeholder. Upload your image to /images/ folder and update the src.
+          -->
+         <img src="mobile.jpg" class="app-screenshot" alt="Gene's Lechon App"/>
+        </div>
+      </div>
+
+      <div class="verified-badge">
+        <div class="verified-icon">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="verified-text">Verified<br/>Official App</div>
+      </div>
+
+      <div class="stats-counter">
+        <div class="stats-numbers">
+          <div class="stats-digit">1</div>
+          <div class="stats-digit">2</div>
+          <div class="stats-digit">8</div>
+          <div class="stats-digit">4</div>
+          <span style="font-size:18px;color:#ff4e00;margin-left:4px;">+</span>
+        </div>
+        <div class="stats-label">Happy<br/>Customers</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REST OF YOUR SITE (Menu, Contact, Footer, etc.) -->
+<section id="menu">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Our <span>Menu</span></h2>
+      <span id="productCount" style="font-size:13px;color:var(--grey);font-weight:700;"></span>
+    </div>
+
+    <div class="cat-tabs" id="catTabs">
+      <button class="cat-tab active" onclick="filterCat('all', this)">All Products</button>
+    </div>
+
+    <div class="search-wrap">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search products..." oninput="handleSearch(this.value)"/>
+    </div>
+
+    <div id="productsGrid" class="products-grid">
+      <div class="skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line"></div><div class="skel-line short"></div></div></div>
+      <div class="skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line"></div><div class="skel-line short"></div></div></div>
+      <div class="skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line"></div><div class="skel-line short"></div></div></div>
+      <div class="skeleton"><div class="skel-img"></div><div class="skel-body"><div class="skel-line"></div><div class="skel-line short"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="track" style="background:var(--dark);padding:50px 0;">
+  <div class="section-inner" style="text-align:center;">
+    <div class="track-cta">
+      <div class="track-cta-icon">🔍</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,34px);color:white;font-weight:900;margin-bottom:10px;">
+        Track Your <span style="color:var(--gold);">Inquiry</span>
+      </h2>
+      <p style="color:rgba(255,255,255,0.65);font-size:14px;max-width:400px;margin:0 auto 28px;">
+        Already submitted an inquiry? Check its status using your order ID, email, or phone number.
+      </p>
+      <button class="btn-track-inquiry" onclick="openTracker()">
+        <i class="fas fa-search"></i> Track My Inquiry
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:white;">
+  <div class="section-inner">
+    <h2 class="section-title" style="margin-bottom:28px;">Find <span>Us</span></h2>
+    <div class="map-contact">
+      <iframe
+        class="map-embed"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126063.66673474684!2d124.5885219!3d8.4542363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32fff5b7bfa7a9e5%3A0x1fe67c89a2c3e6c5!2sCagayan%20de%20Oro%2C%20Misamis%20Oriental!5e0!3m2!1sen!2sph!4v1700000000000"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+      <div class="contact-panel">
+        <div>
+          <h3>Visit <span>Gene's Lechon</span></h3>
+          <p style="color:var(--grey);font-size:14px;margin-top:4px;">Fresh lechon, ready daily!</p>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-info">
+            <strong>Our Location</strong>
+            <span>123 Lechon Street, Divisoria<br/>Cagayan de Oro City, 9000</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="contact-info">
+            <strong>Call / Viber / SMS</strong>
+            <span>(088) 123-4567 | +63 917 000 0000</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-info">
+            <strong>Email Us</strong>
+            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="751d1019191a3512101b10061910161d1a1b5b161a18">[email&#160;protected]</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-clock"></i></div>
+          <div class="contact-info">
+            <strong>Store Hours</strong>
+            <span>Daily: 7:00 AM – 8:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-white">
+        <div class="logo-icon">🐷</div>
+        <div>
+          <strong>Gene's Lechon</strong>
+          <span>Cagayan de Oro's Finest</span>
+        </div>
+      </div>
+      <p>Slow-roasted Filipino lechon made with love and tradition. Serving Cagayan de Oro since 2010.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#menu">Menu</a>
+      <a href="#contact">Our Location</a>
+      <a href="#" onclick="toggleCart()">My Order</a>
+      <a href="#" onclick="openTracker()">🔍 Track Inquiry</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:0881234567">(088) 123-4567</a>
+      <a href="/cdn-cgi/l/email-protection#bbd3ded7d7d4fbdcded5dec8d7ded8d3d4d595d8d4d6"><span class="__cf_email__" data-cfemail="355d5059595a7552505b50465950565d5a5b1b565a58">[email&#160;protected]</span></a>
+      <a href="#">Facebook Page</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Gene's Lechon. All rights reserved.</span>
+    <span>Made with ❤️ in CDO</span>
+  </div>
+</footer>
+
+<!-- Keep all your existing modals and cart drawer -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>🛒 My Order</h3>
+    <button class="cart-close-btn" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items-list" id="cartItemsList">
+    <div class="cart-empty">
+      <i class="fas fa-shopping-bag"></i>
+      <p>No items added yet</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">₱0.00</span>
+    </div>
+    <button class="btn-inquire" id="inquireBtn" onclick="openInquiryModal()" disabled>
+      <i class="fas fa-paper-plane"></i> Send Inquiry
+    </button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="inquiryModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>📋 Order Inquiry</h3>
+      <button class="modal-close" onclick="closeInquiryModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="inquiryModalBody"></div>
+  </div>
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#menu" onclick="toggleMobileMenu()">Menu</a>
+  <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+  <a href="#" onclick="toggleMobileMenu(); toggleCart()">My Order</a>
+  <a href="#" onclick="toggleMobileMenu(); openTracker()">🔍 Track Inquiry</a>
+</div>
+
+<div id="toastContainer"></div>
+
+<div class="modal-overlay" id="trackerModal">
+  <div class="modal-box" style="max-width:520px;">
+    <div class="modal-header" style="background:var(--dark);">
+      <h3>🔍 Track Your Inquiry</h3>
+      <button class="modal-close" onclick="closeTracker()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="trackerBody">
+      <p style="font-size:13px;color:var(--grey);margin-bottom:18px;line-height:1.6;">
+        Enter your <strong>Inquiry ID</strong>, <strong>email address</strong>, or <strong>phone number</strong>.
+      </p>
+      <div class="form-group">
+        <label><i class="fas fa-search" style="color:var(--red);margin-right:5px;"></i> Search</label>
+        <input type="text" id="trackInput" placeholder="INQ-358778 / email / phone" oninput="clearTrackResult()" onkeydown="if(event.key==='Enter') searchInquiry()"/>
+      </div>
+      <button class="btn-submit-inquiry" id="trackBtn" onclick="searchInquiry()" style="margin-top:12px;width:100%;">
+        <i class="fas fa-search"></i> Search Inquiry
+      </button>
+      <div id="trackResult" style="margin-top:16px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CHATBOT -->
+<button id="chatFab" onclick="toggleChat()" aria-label="Chat with Lechon Buddy">🐷
+  <span class="chat-notif"></span>
+</button>
+
+<div id="chatWindow">
+  <div class="chat-header">
+    <span style="font-size:24px;">🐷</span>
+    <div>
+      <div style="font-weight:800;font-size:14px;">Lechon Buddy</div>
+      <div style="font-size:11px;opacity:.8;">Gene's Lechon AI Assistant</div>
+    </div>
+    <button onclick="toggleChat()" class="chat-close-btn">✕</button>
+  </div>
+  <div id="chatMessages" class="chat-messages"></div>
+  <div id="chatChips" class="chat-chips"></div>
+  <div class="chat-input-row">
+    <input id="chatInput" type="text" placeholder="Ask me anything..."
+      onkeydown="if(event.key==='Enter') sendChat()" autocomplete="off"/>
+    <button onclick="sendChat()" class="chat-send-btn">➤</button>
+  </div>
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
+<!-- CHATBOT -->
+<button id="chatFab" onclick="toggleChat()" aria-label="Chat with Lechon Buddy">🐷
+  <span class="chat-notif"></span>
+</button>
+
+<div id="chatWindow">
+  <div class="chat-header">
+    <span style="font-size:24px;">🐷</span>
+    <div>
+      <div style="font-weight:800;font-size:14px;">Lechon Buddy</div>
+      <div style="font-size:11px;opacity:.8;">Gene's Lechon AI Assistant</div>
+    </div>
+    <button onclick="toggleChat()" class="chat-close-btn">✕</button>
+  </div>
+  <div id="chatMessages" class="chat-messages"></div>
+  <div id="chatChips" class="chat-chips"></div>
+  <div class="chat-input-row">
+    <input id="chatInput" type="text" placeholder="Ask me anything..."
+      onkeydown="if(event.key==='Enter') sendChat()" autocomplete="off"/>
+    <button onclick="sendChat()" class="chat-send-btn">➤</button>
+  </div>
+</div>
+
+</body>
+</html>
