@@ -800,12 +800,12 @@ const CHAT_RULES = [
 
   // Pickup
   { match: ['pickup','pick up','take out','takeout','kuha','self','store pickup'],
-    reply: `Yes! You can pick up your order at our store 🏪:\n\n📍 **123 Lechon Street, Divisoria, CDO**\n🕐 Daily: **7:00 AM – 8:00 PM**\n\nJust select "Pickup at Store" when filling out the order form. We'll confirm your order and let you know when it's ready!`,
+    reply: `Yes! You can pick up your order at our store 🏪:\n\n📍 **Gene's Lechon House, Zone 4, Lower Bulua, CDO**\n🕐 Daily: **7:00 AM – 8:00 PM**\n\nJust select "Pickup at Store" when filling out the order form. We'll confirm your order and let you know when it's ready!`,
     chips: ['How to order?','Location','Store hours'] },
 
   // Location / address
   { match: ['where','location','address','lugar','nasa saan','saan kayo','nasaan','find you','map','directions'],
-    reply: `📍 **Gene's Lechon**\n123 Lechon Street, Divisoria\nCagayan de Oro City, 9000\n\nYou can also find us on the map at the bottom of this page! 🗺️`,
+    reply: `📍 **Gene's Lechon**\nGene's Lechon House, Zone 4, Lower\nBulua, Cagayan de Oro City, 9000\nMisamis Oriental\n\nYou can also find us on the map at the bottom of this page! 🗺️`,
     chips: ['Store hours','Contact number','How to order?'] },
 
   // Store hours
